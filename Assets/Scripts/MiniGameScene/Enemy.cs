@@ -7,8 +7,8 @@ public class Enemy : MonoBehaviour
     public float spawnInterval = 2f;
     public Transform player; // 플레이어 연결
 
-    public float spawnMin = -3f;
-    public float spawnMax = 3f;
+    public float spawnMinY = -3f;
+    public float spawnMaxY = 3f;
 
     void Start()
     {
@@ -25,7 +25,7 @@ public class Enemy : MonoBehaviour
         float spawnX = Camera.main.ViewportToWorldPoint(new Vector3(1.1f, 0, 0)).x;
 
         // 플레이어보다 위쪽 Y 위치
-        float spawnY = Random.Range(spawnMin, spawnMax);
+        float spawnY = Random.Range(spawnMinY, spawnMaxY);
 
         Vector3 spawnPos = new Vector3(spawnX, spawnY, 0);
         Instantiate(prefab, spawnPos, Quaternion.identity);

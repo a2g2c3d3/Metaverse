@@ -20,7 +20,6 @@ public class BgLooper : MonoBehaviour
 
     public void OnTriggerEnter2D(Collider2D collision)
     {
-        Debug.Log("Triggered: " + collision.name);
 
         if (collision.CompareTag("BackGround"))
         {
@@ -37,7 +36,6 @@ public class BgLooper : MonoBehaviour
         {
             // "Enemy" 태그를 가진 오브젝트를 삭제
             Destroy(collision.gameObject);
-            Debug.Log(collision.name + " (Enemy) 오브젝트가 삭제되었습니다.");
         }
 
         if (collision.CompareTag("BackGround"))

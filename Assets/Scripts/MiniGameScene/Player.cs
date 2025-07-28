@@ -10,6 +10,8 @@ public class Player : MonoBehaviour
     public bool isDead = false;
     float deathCooldown = 0f;
 
+    public static int score = 0;
+
     bool isFlap = false;
 
     public bool godMode = false;
@@ -28,6 +30,7 @@ public class Player : MonoBehaviour
         {
             Debug.LogError("Not Founded Rigidbody");
         }
+        score = 0;
     }
 
     void Update()
@@ -92,7 +95,19 @@ public class Player : MonoBehaviour
             deathCooldown = 1f;
             animator.SetInteger("IsDie", 1);
         }
- 
+    }
+
+    public void OnTriggerEnter2D(Collider2D other) // 물리 충돌 대신 통과 감지를 위해 Collider2D를 매개변수로 사용
+    {
+
+        if (isDead) 
+            return;
+
+        if (other.CompareTag("Enemy"))
+        {
+            score++; // 점수 1점 증가!
+            Debug.Log("적 통과! 현재 점수: " + score); // 콘솔 창에 점수 표시
+        }
     }
 
 }
