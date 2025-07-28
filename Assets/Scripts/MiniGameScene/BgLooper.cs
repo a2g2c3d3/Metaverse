@@ -4,7 +4,7 @@ using System.Collections.Generic;
 
 public class BgLooper : MonoBehaviour
 {
-    public int numBgCount = 5;
+    public int numBgCount = 4;
 
 
     void Start()
@@ -39,6 +39,16 @@ public class BgLooper : MonoBehaviour
             Destroy(collision.gameObject);
             Debug.Log(collision.name + " (Enemy) 오브젝트가 삭제되었습니다.");
         }
-      
+
+        if (collision.CompareTag("BackGround"))
+        {
+            float widthOfBgObject = ((BoxCollider2D)collision).size.x;
+            Vector3 pos = collision.transform.position;
+
+            pos.x += widthOfBgObject * numBgCount;
+            collision.transform.position = pos;
+            return;
+        }
+
     }
 }
