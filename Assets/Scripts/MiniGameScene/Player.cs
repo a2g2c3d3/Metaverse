@@ -87,7 +87,7 @@ public class Player : MonoBehaviour
 
         if (collision.gameObject.CompareTag("Enemy"))
         {
-            Debug.Log("적에게 부딪힘 → 게임오버");
+
             isDead = true;
             deathCooldown = 1f;
             animator.SetInteger("IsDie", 1);
